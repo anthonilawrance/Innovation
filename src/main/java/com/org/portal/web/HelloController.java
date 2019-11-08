@@ -10,7 +10,7 @@ public class HelloController {
 	private String port;
 	@GetMapping("/hello")
 	public String firstBootApplication() {
-		System.out.println("port ===>"+port);
+		System.out.println("port ===>######## "+port);
 		return "Hi Web";
 	}
 }
