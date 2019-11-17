@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.org.portal.entities.Student;
 import com.org.portal.repository.StudentRepository;
@@ -18,11 +19,14 @@ public class HelloController {
 	@Autowired
 	private StudentRepository studentRepository;
 	@GetMapping("/hello")
-	public String firstBootApplication() {
+	public ModelAndView firstBootApplication() {
 		Student s = new Student();
 		s.setId(123456);
 		s.setName("Anthoni Lawrance");
 		studentRepository.save(s);
-		return "Hi Web, Environment is added "+environment.getProperty("spring.datasource.url")+" profile is "+environment.getProperty("spring.profiles.active");
+		//return "Hi Web, Environment is added "+environment.getProperty("spring.datasource.url")+" profile is "+environment.getProperty("spring.profiles.active");
+		ModelAndView model = new ModelAndView();
+    	model.setViewName("index");
+		return model;
 	}
 }
